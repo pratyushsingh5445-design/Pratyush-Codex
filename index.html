@@ -1,99 +1,132 @@
-
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 40px auto;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pratyush Codex</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
       padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
+    .hidden {
+      display: none;
     }
-
-    .upload {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .upload input {
+    button {
       margin: 10px;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .buttons button {
-      padding: 15px 30px;
+      padding: 10px 20px;
       font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background: #1a73e8;
-      color: white;
       cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .buttons button:hover {
-      background: #155ab6;
-    }
-
-    footer {
-      background: #eee;
-      padding: 15px;
-      text-align: center;
-      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>Pratyush Codex</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Notes</a>
-      <a href="#">Q&A</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h1>Welcome to Pratyush Codex</h1>
-    <p>Your digital library for Class Notes & Q&A</p>
-  </section>
-
-  <div class="container">
-    <h2>Upload Your Notes</h2>
-    <div class="upload">
-      <input type="file">
-      <button>Upload</button>
-    </div>
-
-    <h2>Browse by Class</h2>
-    <div class="buttons">
-      <button>Class 8</button>
-      <button>Class 9</button>
-    </div>
+  <h1>📘 Pratyush Codex</h1>
+  
+  <!-- Step 1: Class Selection -->
+  <div id="class-selection">
+    <h2>Select Class</h2>
+    <button onclick="selectClass('8')">Class 8</button>
+    <button onclick="selectClass('9')">Class 9</button>
   </div>
 
-  <footer>
-    &copy; 2025 Pratyush Codex | All Rights Reserved
-  </footer>
+  <!-- Step 2: Subject Selection -->
+  <div id="subject-selection" class="hidden">
+    <h2>Select Subject</h2>
+    <div id="subjects"></div>
+    <button onclick="goBackToClasses()">⬅ Back</button>
+  </div>
 
+  <!-- Step 3: Chapter Selection -->
+  <div id="chapter-selection" class="hidden">
+    <h2>Select Chapter</h2>
+    <div id="chapters"></div>
+    <button onclick="goBackToSubjects()">⬅ Back</button>
+  </div>
+
+  <!-- Step 4: Notes Display -->
+  <div id="notes-display" class="hidden">
+    <h2>Notes</h2>
+    <div id="notes"></div>
+    <button onclick="goBackToChapters()">⬅ Back</button>
+  </div>
+
+  <script>
+    // Dummy data
+    const data = {
+      "8": {
+        "English": {
+          "Chapter 1": "This is Class 8 English Chapter 1 Notes.",
+          "Chapter 2": "This is Class 8 English Chapter 2 Notes."
+        },
+        "Science": {
+          "Chapter 1": "This is Class 8 Science Chapter 1 Notes.",
+          "Chapter 2": "This is Class 8 Science Chapter 2 Notes."
+        }
+      },
+      "9": {
+        "Physics": {
+          "Force and Motion": "This is Class 9 Physics Force and Motion Notes.",
+          "Gravitation": "This is Class 9 Physics Gravitation Notes."
+        },
+        "Biology": {
+          "Cell": "This is Class 9 Biology Cell Notes.",
+          "Tissues": "This is Class 9 Biology Tissues Notes."
+        }
+      }
+    };
+
+    let selectedClass = "";
+    let selectedSubject = "";
+
+    function selectClass(cls) {
+      selectedClass = cls;
+      document.getElementById("class-selection").classList.add("hidden");
+      document.getElementById("subject-selection").classList.remove("hidden");
+      
+      const subjectsDiv = document.getElementById("subjects");
+      subjectsDiv.innerHTML = "";
+      for (let subject in data[cls]) {
+        subjectsDiv.innerHTML += `<button onclick="selectSubject('${subject}')">${subject}</button>`;
+      }
+    }
+
+    function selectSubject(subject) {
+      selectedSubject = subject;
+      document.getElementById("subject-selection").classList.add("hidden");
+      document.getElementById("chapter-selection").classList.remove("hidden");
+
+      const chaptersDiv = document.getElementById("chapters");
+      chaptersDiv.innerHTML = "";
+      for (let chapter in data[selectedClass][subject]) {
+        chaptersDiv.innerHTML += `<button onclick="selectChapter('${chapter}')">${chapter}</button>`;
+      }
+    }
+
+    function selectChapter(chapter) {
+      document.getElementById("chapter-selection").classList.add("hidden");
+      document.getElementById("notes-display").classList.remove("hidden");
+
+      const notesDiv = document.getElementById("notes");
+      notesDiv.innerHTML = data[selectedClass][selectedSubject][chapter];
+    }
+
+    // Back buttons
+    function goBackToClasses() {
+      document.getElementById("subject-selection").classList.add("hidden");
+      document.getElementById("class-selection").classList.remove("hidden");
+    }
+
+    function goBackToSubjects() {
+      document.getElementById("chapter-selection").classList.add("hidden");
+      document.getElementById("subject-selection").classList.remove("hidden");
+    }
+
+    function goBackToChapters() {
+      document.getElementById("notes-display").classList.add("hidden");
+      document.getElementById("chapter-selection").classList.remove("hidden");
+    }
+  </script>
 </body>
 </html>

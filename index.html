@@ -3,10 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pratyush Codex</title>
+  <title>Pratyush Codex - Homepage</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    header {
+      background: #1a73e8;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to right, #1a73e8, #4285f4);
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .upload {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .upload input {
+      margin: 10px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .buttons button {
+      padding: 15px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #1a73e8;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .buttons button:hover {
+      background: #155ab6;
+    }
+
+    footer {
+      background: #eee;
+      padding: 15px;
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to Pratyush Codex 🚀</h1>
-  <p>This is my first website hosted on GitHub.</p>
+
+  <header>
+    <h1>Pratyush Codex</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Notes</a>
+      <a href="#">Q&A</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Pratyush Codex</h1>
+    <p>Your digital library for Class Notes & Q&A</p>
+  </section>
+
+  <div class="container">
+    <h2>Upload Your Notes</h2>
+    <div class="upload">
+      <input type="file">
+      <button>Upload</button>
+    </div>
+
+    <h2>Browse by Class</h2>
+    <div class="buttons">
+      <button>Class 8</button>
+      <button>Class 9</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Pratyush Codex | All Rights Reserved
+  </footer>
+
 </body>
 </html>

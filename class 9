@@ -156,7 +156,7 @@
     <p>Choose a class to browse subjects and open their Notes & Q&A.</p>
     <div class="buttons">
       <a href="#" class="class8">Class 8</a>
-      <a href="#" class="class9">Class 9</a>
+      <a href="class9/index.html">Class 9</a>
     </div>
     <p style="margin-top:20px;">You can add more classes later if needed.</p>
   </section>
